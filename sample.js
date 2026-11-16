@@ -52,12 +52,41 @@ async function main() {
   // ----------------------------------------------------------
   // Insert one book that has a tags field containing
   // an array of at least 3 strings.
+  await books.insertOne({
+    title: "Dune",
+    tags: ["science fiction", "adventure", "classic"],
+  });
 
   // ----------------------------------------------------------
   // TODO 3 - insertMany
   // ----------------------------------------------------------
   // Insert at least 5 books in a single call using insertMany.
   // Include a mix: some with a publisher object, some with tags, some with both.
+  await books.insertMany([
+    {
+      title: "The Left Hand of Darkness",
+      publisher: { name: "Ace Books", country: "United States" },
+      tags: ["science fiction", "classic"],
+    },
+    {
+      title: "The Name of the Rose",
+      publisher: { name: "Bompiani", country: "Italy" },
+      tags: ["mystery", "historical", "medieval"],
+    },
+    {
+      title: "Foundation",
+      publisher: { name: "Gnome Press", country: "United States" },
+    },
+    {
+      title: "The Little Prince",
+      tags: ["fantasy", "philosophy", "classic"],
+    },
+    {
+      title: "Journey to the Center of the Earth",
+      publisher: { name: "Hetzel", country: "France" },
+      tags: ["adventure", "science fiction"],
+    },
+  ]);
 
   // ----------------------------------------------------------
   // TODO 4 - find all documents
